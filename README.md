@@ -103,6 +103,16 @@ $ grunt concat
 $ grunt jshint:afterconcat
 ```
 
+### ライセンスコメントの挿入
+```javascript
+・・・
+concat: {
+  options: {
+    banner: '/*! some copyright information here */',
+  },
+・・・
+```
+
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>
 
 

@@ -10,6 +10,9 @@ module.exports = function (grunt) {
       afterconcat: ['<%= dirs.dest %>/js/*.js']
     },
     concat: {
+      options: {
+        banner: '/*! some copyright information here */',
+      },
       js: {
         src: ['<%= dirs.src %>/js/*.js'],
         dest: '<%= dirs.dest %>/js/<%= pkg.name %>.js',
