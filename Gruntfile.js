@@ -21,6 +21,7 @@ module.exports = function (grunt) {
     uglify: {
       options: {
         banner: '/*! some copyright information here */',
+        sourceMap: true
       },
       dest: {
         files: {

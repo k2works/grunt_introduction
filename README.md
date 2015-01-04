@@ -174,6 +174,18 @@ $ grunt jshint:afterconcat
 $ grunt uglify
 ```
 
+### SourceMapの追加
+_Gruntfile.js_
+```javascript
+module.exports = function (grunt) {
+・・・
+      js: {
+        src: ['<%= dirs.src %>/js/*.js'],
+        dest: '<%= dirs.dest %>/js/<%= pkg.name %>.js',
+        }
+・・・
+```
+
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>
 
 
