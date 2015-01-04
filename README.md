@@ -73,7 +73,7 @@ $ grunt jshint
 $ npm install --save-dev grunt-contrib-concat
 ```
 
-_Gruntfile.js_
+_case01/Gruntfile.js_
 ```javascript
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -107,7 +107,7 @@ $ grunt jshint:afterconcat
 
 #### ライセンスコメントの挿入
 
-_Gruntfile.js_
+_case01/Gruntfile.js_
 ```javascript
 ・・・
 concat: {
@@ -127,7 +127,7 @@ $ grunt jshint:afterconcat
 $ npm install --save-dev grunt-contrib-uglify
 ```
 
-_Gruntfile.js_
+_case01/Gruntfile.js_
 ```javascript
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -176,7 +176,7 @@ $ grunt uglify
 ```
 
 #### SourceMapの追加
-_Gruntfile.js_
+_case01/Gruntfile.js_
 ```javascript
 module.exports = function (grunt) {
 ・・・
@@ -188,7 +188,7 @@ module.exports = function (grunt) {
 ```
 
 ### タスクをまとめる
-_Gruntfile.js_
+_case01/Gruntfile.js_
 ```javascript
 ・・・
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -208,7 +208,7 @@ _Gruntfile.js_
 ```bash
 $ npm install --save-dev grunt-contrib-watch
 ```
-_Gruntfile.js_
+_case01/Gruntfile.js_
 ```javascript
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -266,7 +266,37 @@ module.exports = function (grunt) {
 $ grunt watch
 ```
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>
+### CoffeeScriptのコンパイル
+```bash
+$ npm install --save-dev grunt-contrib-coffee
+```
 
+_case02/Gruntfile.js_
+```javascript
+module.exports = function(grunt) {
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    dirs: {
+      src: 'src',
+      dest: 'dest',
+    },
+    coffee: {
+      compile: {
+        files: {
+          '<%= dirs.dest %>/js/<%= pkg.name %>.js':
+          '<%= dirs.src %>/coffee/*.coffee'
+        }
+      }
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+};
+```
+
+```bash
+$ grunt coffee
+```
 
 # 参照
 + [JavaScriptエンジニア養成読本](http://gihyo.jp/book/2014/978-4-7741-6797-8)
