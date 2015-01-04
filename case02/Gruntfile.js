@@ -24,12 +24,17 @@ module.exports = function(grunt) {
           '<%= dirs.dest %>/js/<%= pkg.name %>.js'
         }
       }
-    }    
+    },
+    watch: {
+      files: ['<%= dirs.src %>/js/*.js'],
+      tasks: ['build'],
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.registerTask('build','Build CoffeeScript Files',[
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.registerTask('build','Build CoffeeScript Files',[    
     'coffee',
     'uglify',
   ]);
