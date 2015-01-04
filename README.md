@@ -39,7 +39,8 @@ module.exports = function (grunt) {
 ```
 
 ## <a name="2">ケース１：JavaScript開発でのデプロイ時の構文チェック、結合など</a>
-### ソースコードの構文チェック
+### よく使う情報をまとめる
+#### ソースコードの構文チェック
 ```bash
 $ npm install --save-dev grunt-contrib-jshint
 ```
@@ -67,7 +68,7 @@ module.exports = function (grunt) {
 $ grunt jshint
 ```
 
-### ソースコードの結合
+#### ソースコードの結合
 ```bash
 $ npm install --save-dev grunt-contrib-concat
 ```
@@ -104,7 +105,7 @@ $ grunt concat
 $ grunt jshint:afterconcat
 ```
 
-### ライセンスコメントの挿入
+#### ライセンスコメントの挿入
 
 _Gruntfile.js_
 ```javascript
@@ -116,12 +117,12 @@ concat: {
 ・・・
 ```
 
-### 結合したソースコードの構文チェック
+#### 結合したソースコードの構文チェック
 ```bash
 $ grunt jshint:afterconcat
 ```
 
-### ソースコードの圧縮
+#### ソースコードの圧縮
 ```bash
 $ npm install --save-dev grunt-contrib-uglify
 ```
@@ -174,7 +175,7 @@ $ grunt jshint:afterconcat
 $ grunt uglify
 ```
 
-### SourceMapの追加
+#### SourceMapの追加
 _Gruntfile.js_
 ```javascript
 module.exports = function (grunt) {
