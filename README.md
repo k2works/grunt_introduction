@@ -187,6 +187,23 @@ module.exports = function (grunt) {
 ・・・
 ```
 
+### タスクをまとめる
+_Gruntfile.js_
+```javascript
+・・・
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  grunt.registerTask('build', 'Build JavaScript Files', [
+    'jshint:beforeconcat',
+    'concat',
+    'jshint:afterconcat',
+    'uglify'
+  ]);
+};
+```
+
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>
 
 
