@@ -29,4 +29,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.registerTask('build','Build CoffeeScript Files',[
+    'coffee',
+    'uglify',
+  ]);
 };
