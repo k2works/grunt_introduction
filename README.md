@@ -113,6 +113,10 @@ concat: {
 ・・・
 ```
 
+### 結合したソースコードの構文チェック
+```bash
+$ grunt jshint:afterconcat
+```
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>
 
 
