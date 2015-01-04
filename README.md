@@ -16,6 +16,28 @@ Grunt入門
 
 # 詳細
 ## <a name="1">セットアップ</a>
+```bash
+$ npm install -g grunt-cli
+$ cd grunt_introduction
+$ npm init
+$ npm install --save-dev grunt
+$ touch Gruntfile.js
+$ mkdir src
+$ mkdir dest
+```
+_Gruntfile.js_
+```javascript
+module.exports = function (grunt) {
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    dirs: {
+      src: 'src',
+      dist: 'dist',
+    },
+  });
+}
+```
+
 ## <a name="2">ケース１：JavaScript開発でのデプロイ時の構文チェック、結合など</a>
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>
 
