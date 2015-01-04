@@ -67,8 +67,6 @@ module.exports = function (grunt) {
 $ grunt jshint
 ```
 
-
-
 ### ソースコードの結合
 
 
