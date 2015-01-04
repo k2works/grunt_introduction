@@ -16,6 +16,7 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         banner: '/*! some copyright information here */',
+        sourceMapIn: '<%= dirs.dest %>/js/<%= pkg.name %>.js.map'
       },
       dest: {
         files: {

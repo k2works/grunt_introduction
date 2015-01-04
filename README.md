@@ -266,7 +266,8 @@ module.exports = function (grunt) {
 $ grunt watch
 ```
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>
-### CoffeeScriptのコンパイル
+### よく使う情報をまとめる
+#### CoffeeScriptのコンパイル
 ```bash
 $ npm install --save-dev grunt-contrib-coffee
 ```
@@ -298,7 +299,7 @@ module.exports = function(grunt) {
 $ grunt coffee
 ```
 
-### ソースコードの圧縮
+#### ソースコードの圧縮
 ```bash
 $ npm install --save-dev grunt-contrib-uglify
 ```
@@ -340,6 +341,44 @@ module.exports = function(grunt) {
 ```bash
 $ grunt coffee
 $ grunt uglify
+```
+
+#### SourceMapの追加
+
+_case02/Gruntfile.js_
+```javascript
+module.exports = function(grunt) {
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    dirs: {
+      src: 'src',
+      dest: 'dest',
+    },
+    coffee: {
+      compile: {
+        files: {
+          '<%= dirs.dest %>/js/<%= pkg.name %>.js':
+          '<%= dirs.src %>/coffee/*.coffee'
+        }
+      }
+    },
+    uglify: {
+      options: {
+        banner: '/*! some copyright information here */',
+        sourceMapIn: '<%= dirs.dest %>/js/<%= pkg.name %>.js.map'
+      },
+      dest: {
+        files: {
+          '<%= dirs.dest %>/js/<%= pkg.name %>.min.js':
+          '<%= dirs.dest %>/js/<%= pkg.name %>.js'
+        }
+      }
+    }    
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+};
 ```
 
 # 参照
