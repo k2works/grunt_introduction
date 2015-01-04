@@ -18,7 +18,7 @@ Grunt入門
 ## <a name="1">セットアップ</a>
 ```bash
 $ npm install -g grunt-cli
-$ cd grunt_introduction
+$ cd grunt_introduction/case01
 $ npm init
 $ npm install --save-dev grunt
 $ touch Gruntfile.js
@@ -147,7 +147,7 @@ module.exports = function (grunt) {
       js: {
         src: ['<%= dirs.src %>/js/*.js'],
         dest: '<%= dirs.dest %>/js/<%= pkg.name %>.js',
-      }      
+      }
     },
     uglify: {
       options: {
@@ -228,7 +228,7 @@ module.exports = function (grunt) {
       js: {
         src: ['<%= dirs.src %>/js/*.js'],
         dest: '<%= dirs.dest %>/js/<%= pkg.name %>.js',
-      }      
+      }
     },
     uglify: {
       options: {
