@@ -72,6 +72,7 @@ $ grunt jshint
 $ npm install --save-dev grunt-contrib-concat
 ```
 
+_Gruntfile.js_
 ```javascript
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -104,6 +105,8 @@ $ grunt jshint:afterconcat
 ```
 
 ### ライセンスコメントの挿入
+
+_Gruntfile.js_
 ```javascript
 ・・・
 concat: {
@@ -116,6 +119,59 @@ concat: {
 ### 結合したソースコードの構文チェック
 ```bash
 $ grunt jshint:afterconcat
+```
+
+### ソースコードの圧縮
+```bash
+$ npm install --save-dev grunt-contrib-uglify
+```
+
+_Gruntfile.js_
+```javascript
+module.exports = function (grunt) {
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    dirs: {
+      src: 'src',
+      dest: 'dest',
+    },
+    jshint: {
+      beforeconcat: ['<%= dirs.src %>/js/*.js'],
+      afterconcat: ['<%= dirs.dest %>/js/*.js']
+    },
+    concat: {
+      options: {
+        banner: '/*! some copyright information here */',
+      },
+      js: {
+        src: ['<%= dirs.src %>/js/*.js'],
+        dest: '<%= dirs.dest %>/js/<%= pkg.name %>.js',
+      }      
+    },
+    uglify: {
+      options: {
+        banner: '/*! some copyright information here */',
+      },
+      dest: {
+        files: {
+          '<%= dirs.dest %>/js/<%= pkg.name %>.min.js':
+          '<%= dirs.dest %>/js/<%= pkg.name %>.js'
+        }
+      }
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+};
+```
+
+```bash
+$ grunt jshint:beforeconcat
+$ grunt concat
+$ grunt jshint:afterconcat
+$ grunt uglify
 ```
 
 ## <a name="3">ケース２：CoffeeScriptスクリプトのコンパイル、圧縮</a>

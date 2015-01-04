@@ -16,10 +16,22 @@ module.exports = function (grunt) {
       js: {
         src: ['<%= dirs.src %>/js/*.js'],
         dest: '<%= dirs.dest %>/js/<%= pkg.name %>.js',
+      }      
+    },
+    uglify: {
+      options: {
+        banner: '/*! some copyright information here */',
+      },
+      dest: {
+        files: {
+          '<%= dirs.dest %>/js/<%= pkg.name %>.min.js':
+          '<%= dirs.dest %>/js/<%= pkg.name %>.js'
+        }
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 };
