@@ -12,8 +12,20 @@ module.exports = function(grunt) {
           '<%= dirs.src %>/coffee/*.coffee'
         }
       }
-    }
+    },
+    uglify: {
+      options: {
+        banner: '/*! some copyright information here */',
+      },
+      dest: {
+        files: {
+          '<%= dirs.dest %>/js/<%= pkg.name %>.min.js':
+          '<%= dirs.dest %>/js/<%= pkg.name %>.js'
+        }
+      }
+    }    
   });
 
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 };
